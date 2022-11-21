@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/HomeFragment">
+
+    <fragment
+        android:id="@+id/SecondFragment"
+        android:name="com.example.exercise.SecondFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_second">
+    </fragment>
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="com.example.exercise.HomeFragment"
+        android:label="Home Fragment"
+        tools:layout="@layout/fragment_home">
+
+    </fragment>
+    <fragment
+        android:id="@+id/DietFragment"
+        android:name="com.example.exercise.DietFragment"
+        android:label="Diet Fragment"
+        tools:layout="@layout/fragment_diet">
+
+        <action
+            android:id="@+id/action_DietFragment_to_CalendarFragment"
+            app:destination="@id/CalendarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/CalendarFragment"
+        android:name="com.example.exercise.CalendarFragment"
+        android:label="Calendar Fragment"
+        tools:layout="@layout/fragment_calendar">
+    </fragment>
+</navigation>
