@@ -6,12 +6,6 @@
     app:startDestination="@id/HomeFragment">
 
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.exercise.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-    </fragment>
-    <fragment
         android:id="@+id/HomeFragment"
         android:name="com.example.exercise.HomeFragment"
         android:label="Home Fragment"

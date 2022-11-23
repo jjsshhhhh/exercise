@@ -1,5 +1,6 @@
 package com.example.exercise
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.exercise.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -18,9 +20,10 @@ import com.example.exercise.DataFragment
 import com.example.exercise.ExerciseFragment
 import com.example.exercise.MyPageFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+
 import com.google.android.material.navigation.NavigationBarView.OnItemSelectedListener
 
-class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity()  {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
@@ -37,8 +40,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
-        nav_view.setOnNavigationItemSelectedListener(this)
+        initNavigationBar()
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
@@ -67,34 +69,54 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 || super.onSupportNavigateUp()
     }
 
-    override fun onNavigationItemSelected(p0: MenuItem): Boolean {
-        when(p0.itemId) {
-            R.id.navigation_home -> {
-                homeFragment = HomeFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment_activity_main, homeFragment).commit()
-                return true
-            }
-            R.id.navigation_exercise -> {
-                exerciseFragment = ExerciseFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment_activity_main, exerciseFragment).commit()
-                return true
-            }
-            R.id.navigation_diet -> {
-                dietFragment = DietFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment_activity_main, dietFragment).commit()
-                return true
-            }
-            R.id.navigation_data -> {
-                dataFragment = DataFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment_activity_main, dataFragment).commit()
-                return true
-            }
-            R.id.navigation_mypage -> {
-                mypageFragment = MyPageFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment_activity_main, mypageFragment).commit()
-                return true
+    fun initNavigationBar(){
+        binding.navView.run {
+            setOnItemSelectedListener { item ->
+                when(item.itemId) {
+                    R.id.navigation_home -> {
+                        homeFragment = HomeFragment()
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.nav_host_fragment_activity_main, homeFragment)
+                            .commit()
+
+                    }
+                    R.id.navigation_exercise -> {
+                        val intent = Intent(requireContext(), ExerciseActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                        /*
+                        exerciseFragment = ExerciseFragment()
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.nav_host_fragment_activity_main, exerciseFragment)
+                            .commit()    */
+
+                    }
+                    R.id.navigation_diet -> {
+                        dietFragment = DietFragment()
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.nav_host_fragment_activity_main, dietFragment)
+                            .commit()
+
+                    }
+                    R.id.navigation_data -> {
+                        dataFragment = DataFragment()
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.nav_host_fragment_activity_main, dataFragment)
+                            .commit()
+
+                    }
+                    R.id.navigation_mypage -> {
+                        mypageFragment = MyPageFragment()
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.nav_host_fragment_activity_main, mypageFragment)
+                            .commit()
+
+                    }
+                }
+                true
             }
         }
-        return false
     }
+
+
 }

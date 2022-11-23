@@ -26,12 +26,14 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
     private var _binding: FragmentMyPageBinding? = null
     private val binding get() = _binding!!
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
 
     override fun onCreateView(
@@ -41,6 +43,8 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_my_page, container, false)
     }
+
+
 
     companion object {
         /**

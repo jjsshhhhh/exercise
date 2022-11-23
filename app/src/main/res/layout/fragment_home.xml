@@ -21,8 +21,7 @@
             android:id="@+id/home_top"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:orientation="vertical"
-            android:layout_weight="1"/>
+            android:orientation="vertical"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -30,8 +29,7 @@
             android:layout_marginTop="10dp"
             android:elevation="20dp"
             android:background="@drawable/back_white"
-            android:layout_margin="10dp"
-            android:weightSum="10">
+            android:layout_margin="10dp">
 
             <TextView
                 android:id="@+id/data_title"
@@ -176,8 +174,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/back_white"
             android:elevation="20dp"
-            android:layout_margin="10dp"
-            android:weightSum="10">
+            android:layout_margin="10dp">
 
             <TextView
                 android:id="@+id/exe_title"
@@ -323,29 +320,170 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/back_white"
             android:elevation="20dp"
+            android:paddingBottom="5dp"
             android:weightSum="10">
 
             <TextView
-                android:id="@+id/diet_title"
+                android:id="@+id/text_diet_today"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/gradient_button"
-                android:padding="5dp"
-                android:text="식단 기록"
+                android:padding="3dp"
+                android:text="오늘의 칼로리"
                 android:textAlignment="center"
                 android:textColor="#fff"
                 android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/today_breakfast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_diet_today"
+                android:layout_centerHorizontal="true"
+                android:layout_toLeftOf="@id/today_lunch"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="아침"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="70"
+                        android:textSize="40sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="kcal"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/today_lunch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_diet_today"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="40dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="점심"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="95"
+                        android:textSize="40sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="kcal"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/today_dinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_diet_today"
+                android:layout_centerHorizontal="true"
+                android:layout_toRightOf="@id/today_lunch"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="저녁"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="87"
+                        android:textSize="40sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="kcal"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/today_lunch"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="총 "
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2000"
+                    android:textColor="#7883DF"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" kcal"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+            </LinearLayout>
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/back_white"
-            android:weightSum="10">
+            android:layout_height="200dp"
+            android:background="@drawable/back_white">
 
         </RelativeLayout>
 
