@@ -1,12 +1,19 @@
 package com.example.exercise
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.os.PersistableBundle
+import android.util.Log
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import com.example.exercise.databinding.FragmentExerciseBinding
+import android.content.Context
+import androidx.core.content.edit
+import androidx.core.widget.addTextChangedListener
+
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -17,13 +24,21 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ExerciseFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ExerciseFragment : Fragment(R.layout.fragment_exercise) {
+class ExerciseFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
-    private var _binding: FragmentExerciseBinding? = null
-    private val binding get() = _binding!!
+    private val handler = Handler(Looper.getMainLooper())
+    private val _exeEditText: EditText by lazy {
+        findViewById<EditText>(R.id.exe1_memo)
+        findViewById<EditText>(R.id.exe2_memo)
+        findViewById<EditText>(R.id.exe3_memo)
+        findViewById<EditText>(R.id.exe4_memo)
+        findViewById<EditText>(R.id.exe5_memo)
+        findViewById<EditText>(R.id.exe6_memo)
+    }
+    EditText exe1_memo = (EditText)getView().findViewById(R.id.exe1_memo)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

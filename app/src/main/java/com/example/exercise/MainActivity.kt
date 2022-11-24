@@ -81,14 +81,10 @@ class MainActivity : AppCompatActivity()  {
 
                     }
                     R.id.navigation_exercise -> {
-                        val intent = Intent(requireContext(), ExerciseActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                        /*
                         exerciseFragment = ExerciseFragment()
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.nav_host_fragment_activity_main, exerciseFragment)
-                            .commit()    */
+                            .commit()
 
                     }
                     R.id.navigation_diet -> {
