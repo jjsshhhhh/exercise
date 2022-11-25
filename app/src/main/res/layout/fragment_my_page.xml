@@ -7,218 +7,174 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical"
-    tools:context=".MyPageFragment">
+    tools:context=".ui.mypage.MyPageFragment">
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@drawable/gradient">
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/exe_top"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/gradient"
-                android:padding="15dp"
-                android:weightSum="10">
-
-                <TextView
-                    android:id="@+id/exercise_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginHorizontal="10dp"
-                    android:text="마이페이지"
-                    android:textColor="#fff"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/exercise_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/exercise_title"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="5dp"
-                    android:text="ㅇㅇㅇ님의 정보입니다."
-                    android:textColor="#fff"
-                    android:textSize="20sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginVertical="30dp"
-                android:layout_marginHorizontal="20dp"
-                android:background="@drawable/back_button"
-                android:elevation="20dp">
-
-                <ImageView
-                    android:id="@+id/img_load"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:layout_centerHorizontal="true"
-                    android:background="#ddd"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_person_100"
-                    app:tint="#888" />
-                <Button
-                    android:id="@+id/btn_file_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/img_load"
-                    android:layout_centerHorizontal="true"
-                    android:text="edit photo"
-                    android:textColor="#888"
-                    android:background="@null"
-                    />
-
+                android:orientation="vertical">
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@id/btn_file_img"
-                    android:orientation="vertical" >
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginVertical="30dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:paddingBottom="20dp"
+                    android:background="@drawable/back_button"
+                    android:elevation="20dp">
 
-                    <LinearLayout
-                        android:id="@+id/profile_name"
-                        android:layout_width="match_parent"
+                    <ImageView
+                        android:id="@+id/img_load"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="30dp"
-                        android:layout_marginVertical="10dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="3dp"
-                            android:text="| NAME"
-                            android:textAlignment="center"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="25sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/profile_name_edit"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="8dp"
-                            android:ems="10"
-                            android:hint="키를 입력하세요."
-                            android:textSize="15sp"
-                            android:textColorHint="#555"
-                            android:maxLength="20"
-                            android:backgroundTint="@color/colorPrimary"
-                            android:visibility="invisible" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/profile_age"
-                        android:layout_width="match_parent"
+                        android:layout_marginTop="30dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="#ddd"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_person_100"
+                        app:tint="#888" />
+                    <TextView
+                        android:id="@+id/btn_file_img"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/profile_name"
-                        android:layout_marginHorizontal="30dp"
-                        android:layout_marginVertical="10dp"
-                        android:orientation="horizontal" >
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="3dp"
-                            android:text="| AGE"
-                            android:textAlignment="center"
-                            android:textColor="@color/colorPrimary"
-                            android:textStyle="bold"
-                            android:textSize="25sp" />
-                        <EditText
-                            android:id="@+id/profile_age_edit"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="8dp"
-                            android:ems="10"
-                            android:hint="나이를 입력하세요."
-                            android:textSize="15sp"
-                            android:textColorHint="#555"
-                            android:maxLength="20"
-                            android:backgroundTint="@color/colorPrimary"
-                            android:visibility="invisible" />
-                    </LinearLayout>
+                        android:layout_below="@id/img_load"
+                        android:layout_centerHorizontal="true"
+                        android:text="edit photo"
+                        android:textSize="10dp"
+                        android:textColor="#888"/>
 
-                    <LinearLayout
-                        android:id="@+id/profile_height"
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/profile_age"
-                        android:layout_marginHorizontal="30dp"
-                        android:layout_marginVertical="10dp"
-                        android:orientation="horizontal">
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@id/btn_file_img"
+                        android:orientation="vertical" >
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:id="@+id/profile_name"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="3dp"
-                            android:text="| HEIGHT"
-                            android:textAlignment="center"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="25sp"
-                            android:textStyle="bold" />
+                            android:layout_marginHorizontal="30dp"
+                            android:layout_marginVertical="10dp"
+                            android:orientation="horizontal">
 
-                        <EditText
-                            android:id="@+id/profile_height_edit"
-                            android:layout_width="wrap_content"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="3dp"
+                                android:text="| NAME"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:id="@+id/profile_name_edit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:hint="이름을 입력하세요."
+                                android:textSize="15sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/profile_age"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="8dp"
-                            android:ems="10"
-                            android:hint="키를 입력하세요."
-                            android:textSize="15sp"
-                            android:textColorHint="#555"
-                            android:maxLength="20"
-                            android:backgroundTint="@color/colorPrimary"
-                            android:visibility="invisible" />
-                    </LinearLayout>
+                            android:layout_below="@id/profile_name"
+                            android:layout_marginHorizontal="30dp"
+                            android:layout_marginVertical="10dp"
+                            android:orientation="horizontal" >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="3dp"
+                                android:text="| AGE"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorPrimary"
+                                android:textStyle="bold"
+                                android:textSize="20sp" />
+                            <TextView
+                                android:id="@+id/profile_age_edit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:hint="나이를 입력하세요."
+                                android:textSize="15sp" />
+                        </LinearLayout>
 
-
-
-                    <LinearLayout
-                        android:id="@+id/profile_weight"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/profile_height"
-                        android:layout_marginHorizontal="30dp"
-                        android:layout_marginVertical="10dp"
-                        android:orientation="horizontal" >
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:id="@+id/profile_height"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="3dp"
-                            android:text="| WEIGHT"
-                            android:textAlignment="center"
-                            android:textColor="@color/colorPrimary"
-                            android:textStyle="bold"
-                            android:textSize="25sp" />
-                        <EditText
-                            android:id="@+id/profile_weight_edit"
-                            android:layout_width="wrap_content"
+                            android:layout_below="@id/profile_age"
+                            android:layout_marginHorizontal="30dp"
+                            android:layout_marginVertical="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="3dp"
+                                android:text="| HEIGHT"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/profile_height_edit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:hint="키를 입력하세요."
+                                android:textSize="15sp" />
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:id="@+id/profile_weight"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="8dp"
-                            android:ems="10"
-                            android:hint="몸무게를 입력하세요."
-                            android:textSize="15sp"
-                            android:textColorHint="#555"
-                            android:maxLength="20"
-                            android:backgroundTint="@color/colorPrimary"
-                            android:visibility="invisible" />
-                    </LinearLayout>
+                            android:layout_below="@id/profile_height"
+                            android:layout_marginHorizontal="30dp"
+                            android:layout_marginVertical="10dp"
+                            android:orientation="horizontal" >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="3dp"
+                                android:text="| WEIGHT"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorPrimary"
+                                android:textStyle="bold"
+                                android:textSize="20sp" />
+                            <TextView
+                                android:id="@+id/profile_weight_edit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:hint="몸무게를 입력하세요."
+                                android:textSize="15sp" />
+                        </LinearLayout>
+                    </RelativeLayout>
                 </RelativeLayout>
-            </RelativeLayout>
-        </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 </LinearLayout>

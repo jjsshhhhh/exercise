@@ -18,15 +18,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:layout_weight="11"
-                android:background="@drawable/gradient">
-
-            </RelativeLayout>
-
             <RelativeLayout
                 android:id="@+id/exe_top"
                 android:layout_width="match_parent"

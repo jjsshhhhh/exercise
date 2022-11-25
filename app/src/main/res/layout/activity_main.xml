@@ -7,23 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.Exercise.AppBarOverlay"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:ignore="MissingConstraints">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/gradient"
-            app:popupTheme="@style/Theme.Exercise.PopupOverlay" />
-    </com.google.android.material.appbar.AppBarLayout>
-
     <include
         layout="@layout/content_main"
         tools:layout_editor_absoluteX="0dp"

@@ -1,14 +1,17 @@
 package com.example.exercise
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.text.TextWatcher
+import android.text.Editable
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
-import com.example.exercise.databinding.FragmentHomeBinding
 import com.example.exercise.databinding.FragmentMyPageBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -29,14 +32,12 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
     private var _binding: FragmentMyPageBinding? = null
     private val binding get() = _binding!!
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
     }
 
     override fun onCreateView(
@@ -45,6 +46,7 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
     ): View? {
         _binding = FragmentMyPageBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
+
         return binding.root
     }
 
@@ -52,17 +54,67 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.profileNameEdit.setOnClickListener {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("프로필 수정")
-            builder.setPositiveButton("완료", DialogInterface.OnClickListener {
-
+            val dialog = CustomDialog(requireContext())
+            dialog.showDia()
+            dialog.setOnClickListener(object: CustomDialog.ButtonClickListener{
+                override fun onClicked(name: String) {
+                    binding.profileNameEdit.text = name
+                    Log.d("MyPageFragment", name)
+                    val mActivity = activity as MainActivity
+                    mActivity.receiveNameData(name)
+                }
             })
-            builder.setNegativeButton("취소", DialogInterface.onClickListener {
-                getDialog().cancel()
+        }
+        binding.profileAgeEdit.setOnClickListener {
+            val dialog = CustomDialog(requireContext())
+            dialog.showDia()
+            dialog.setOnClickListener(object: CustomDialog.ButtonClickListener{
+                override fun onClicked(age: String) {
+                    binding.profileAgeEdit.text = age
+                    Log.d("MyPageFragment", age)
+                    val mActivity = activity as MainActivity
+                    mActivity.receiveAgeData(age)
+                }
             })
-            builder.show()
+        }
+        binding.profileHeightEdit.setOnClickListener {
+            val dialog = CustomDialog(requireContext())
+            dialog.showDia()
+            dialog.setOnClickListener(object: CustomDialog.ButtonClickListener{
+                override fun onClicked(height: String) {
+                    binding.profileHeightEdit.text = height
+                    Log.d("MyPageFragment", height)
+                    val mActivity = activity as MainActivity
+                    mActivity.receiveHeightData(height)
+                }
+            })
+        }
+        binding.profileWeightEdit.setOnClickListener {
+            val dialog = CustomDialog(requireContext())
+            dialog.showDia()
+            dialog.setOnClickListener(object: CustomDialog.ButtonClickListener{
+                override fun onClicked(weight: String) {
+                    binding.profileWeightEdit.text = weight
+                    Log.d("MyPageFragment", weight)
+                    val mActivity = activity as MainActivity
+                    mActivity.receiveWeightData(weight)
+                }
+            })
         }
     }
+
+    fun changeName(name:String) {
+        if (name != null) {
+            Log.d("huhuhuh", name)
+            //binding.profileNameEdit.text = name
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     companion object {
         /**
          * Use this factory method to create a new instance of

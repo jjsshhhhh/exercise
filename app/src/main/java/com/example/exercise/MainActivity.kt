@@ -1,7 +1,9 @@
 package com.example.exercise
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.app.Dialog
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -9,10 +11,15 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
+import android.util.Log
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.exercise.databinding.ActivityMainBinding
+import com.example.exercise.databinding.FragmentMyPageBinding
+import androidx.core.widget.addTextChangedListener
+import androidx.core.content.edit
 import kotlinx.android.synthetic.main.activity_main.*
 
 import com.example.exercise.HomeFragment
@@ -26,16 +33,17 @@ class MainActivity : AppCompatActivity()  {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    private lateinit var binding2: FragmentMyPageBinding
 
     private lateinit var homeFragment: HomeFragment
     private lateinit var dataFragment: DataFragment
     private lateinit var mypageFragment: MyPageFragment
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
+        binding2 = FragmentMyPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         initNavigationBar()
@@ -43,6 +51,25 @@ class MainActivity : AppCompatActivity()  {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        val namePreferences = getSharedPreferences("name_info", Context.MODE_PRIVATE)
+        val nameInfo = namePreferences.getString("profile", "")
+        val fragmentA = MyPageFragment()
+        if (nameInfo != null) {
+            fragmentA.changeName(nameInfo)
+        }
+        //binding2.profileNameEdit.text = (namePreferences.getString("profile",""))
+
+        /*
+        val bundleA = Bundle()
+        bundleA.putString("bundle", nameInfo)
+        val fragmentA = MyPageFragment()
+        fragmentA.arguments = bundleA
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.add(R.id.profile_name_edit,fragmentA)
+        transaction.commit()
+
+         */
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -59,6 +86,35 @@ class MainActivity : AppCompatActivity()  {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    fun receiveNameData(name: String) {
+        getSharedPreferences("name_info", Context.MODE_PRIVATE).edit {
+            putString("profile", name)
+            apply()
+        }
+        Log.d("MainActivity", "저장 ${name}")
+    }
+    fun receiveAgeData(age: String) {
+        getSharedPreferences("age_info", Context.MODE_PRIVATE).edit {
+            putString("profile", age)
+            apply()
+        }
+        Log.d("MainActivity", "저장 ${age}")
+    }
+    fun receiveHeightData(height: String) {
+        getSharedPreferences("height_info", Context.MODE_PRIVATE).edit {
+            putString("profile", height)
+            apply()
+        }
+        Log.d("MainActivity", "저장 ${height}")
+    }
+    fun receiveWeightData(weight: String) {
+        getSharedPreferences("weight_info", Context.MODE_PRIVATE).edit {
+            putString("profile", weight)
+            apply()
+        }
+        Log.d("MainActivity", "저장 ${weight}")
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -97,6 +153,4 @@ class MainActivity : AppCompatActivity()  {
             }
         }
     }
-
-
 }
