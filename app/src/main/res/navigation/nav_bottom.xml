@@ -6,25 +6,13 @@
     app:startDestination="@+id/navigation_home">
 
     <fragment
-        android:id="@+id/navigation_diet"
-        android:name="com.example.exercise.DietFragment"
-        android:label="Diet"
-        tools:layout="@layout/fragment_diet" />
-
-    <fragment
-        android:id="@+id/navigation_exercise"
-        android:name="com.example.exercise.ExerciseFragment"
-        android:label="Exercise"
-        tools:layout="@layout/fragment_exercise" />
-
-    <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.exercise.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/navigation_data"
-        android:name="com.example.exercise.HomeFragment"
+        android:name="com.example.exercise.DataFragment"
         android:label="Data"
         tools:layout="@layout/fragment_home" />
     <fragment

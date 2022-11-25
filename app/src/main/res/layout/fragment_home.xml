@@ -26,152 +26,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:elevation="20dp"
-            android:background="@drawable/back_white"
-            android:layout_margin="10dp">
-
-            <TextView
-                android:id="@+id/data_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/gradient_button"
-                android:padding="5dp"
-                android:text="스마트워치 기록"
-                android:textAlignment="center"
-                android:textColor="#fff"
-                android:textSize="20sp"/>
-
-            <LinearLayout
-                android:id="@+id/heart_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@id/data_title"
-                android:layout_toLeftOf="@id/calories_group"
-                android:layout_margin="10dp"
-                android:gravity="center_horizontal">
-
-                <ImageView
-                    android:id="@+id/heart_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_heart_40"
-                    app:tint="#FF8178" />
-                <TextView
-                    android:id="@+id/heart_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Heart"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/calories_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@id/data_title"
-                android:layout_toLeftOf="@id/distance_group"
-                android:layout_margin="10dp"
-                android:gravity="center_horizontal">
-
-                <ImageView
-                    android:id="@+id/calories_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_calories_40"
-                    app:tint="#FF9800" />
-
-                <TextView
-                    android:id="@+id/calories_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Calories"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/distance_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@id/data_title"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="10dp"
-                android:gravity="center_horizontal">
-
-                <ImageView
-                    android:id="@+id/distance_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_distance_40"
-                    app:tint="#FFC107" />
-                <TextView
-                    android:id="@+id/distance_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Distance" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/laps_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@id/data_title"
-                android:layout_toRightOf="@id/distance_group"
-                android:layout_margin="10dp"
-                android:gravity="center_horizontal">
-
-                <ImageView
-                    android:id="@+id/laps_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_lap_40"
-                    app:tint="#8BC34A" />
-                <TextView
-                    android:id="@+id/laps_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Laps"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/speed_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@id/data_title"
-                android:layout_toRightOf="@id/laps_group"
-                android:layout_margin="10dp"
-                android:gravity="center_horizontal">
-
-                <ImageView
-                    android:id="@+id/speed_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_speed_40"
-                    app:tint="#FF6464" />
-                <TextView
-                    android:id="@+id/speed_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Speed"/>
-            </LinearLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:background="@drawable/back_white"
             android:elevation="20dp"
             android:layout_margin="10dp">
@@ -478,6 +332,70 @@
                     android:textAlignment="center"
                     android:textSize="20sp" />
             </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/button_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/back_white"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:id="@+id/icon_calendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/gradient_button"
+                android:padding="10dp"
+                android:src="@drawable/ic_diet_calendar_50"
+                app:tint="#fff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/icon_calendar"
+                android:text="이번 달 식단 달력   >"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/button_exercise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/back_white"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:id="@+id/icon_exercise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/gradient_button"
+                android:padding="10dp"
+                android:src="@drawable/ic_diet_calendar_50"
+                app:tint="#fff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/icon_exercise"
+                android:text="운동 기록   >"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
         </RelativeLayout>
 
         <RelativeLayout

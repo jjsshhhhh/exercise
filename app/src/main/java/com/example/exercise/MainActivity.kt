@@ -10,14 +10,13 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.exercise.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
 import com.example.exercise.HomeFragment
-import com.example.exercise.DietFragment
 import com.example.exercise.DataFragment
-import com.example.exercise.ExerciseFragment
 import com.example.exercise.MyPageFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -30,9 +29,8 @@ class MainActivity : AppCompatActivity()  {
 
     private lateinit var homeFragment: HomeFragment
     private lateinit var dataFragment: DataFragment
-    private lateinit var exerciseFragment: ExerciseFragment
     private lateinit var mypageFragment: MyPageFragment
-    private lateinit var dietFragment: DietFragment
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,20 +75,6 @@ class MainActivity : AppCompatActivity()  {
                         homeFragment = HomeFragment()
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.nav_host_fragment_activity_main, homeFragment)
-                            .commit()
-
-                    }
-                    R.id.navigation_exercise -> {
-                        exerciseFragment = ExerciseFragment()
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.nav_host_fragment_activity_main, exerciseFragment)
-                            .commit()
-
-                    }
-                    R.id.navigation_diet -> {
-                        dietFragment = DietFragment()
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.nav_host_fragment_activity_main, dietFragment)
                             .commit()
 
                     }
