@@ -20,47 +20,47 @@ import com.example.exercise.databinding.ActivityMainBinding
 import com.example.exercise.databinding.FragmentMyPageBinding
 import androidx.core.widget.addTextChangedListener
 import androidx.core.content.edit
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import kotlinx.android.synthetic.main.activity_main.*
 
 import com.example.exercise.HomeFragment
 import com.example.exercise.DataFragment
 import com.example.exercise.MyPageFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
 import com.google.android.material.navigation.NavigationBarView.OnItemSelectedListener
 
 class MainActivity : AppCompatActivity()  {
 
+    private val fragmentManager = supportFragmentManager
+
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-    private lateinit var binding2: FragmentMyPageBinding
 
-    private lateinit var homeFragment: HomeFragment
-    private lateinit var dataFragment: DataFragment
-    private lateinit var mypageFragment: MyPageFragment
+    private var homeFragment: HomeFragment? = null
+    private var dataFragment: DataFragment? = null
+    private var mypageFragment: MyPageFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-        binding2 = FragmentMyPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        initNavigationBar()
+        initBottomNavigation()
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
+        /*
         val namePreferences = getSharedPreferences("name_info", Context.MODE_PRIVATE)
         val nameInfo = namePreferences.getString("profile", "")
         val fragmentA = MyPageFragment()
         if (nameInfo != null) {
             fragmentA.changeName(nameInfo)
         }
-        //binding2.profileNameEdit.text = (namePreferences.getString("profile",""))
 
-        /*
         val bundleA = Bundle()
         bundleA.putString("bundle", nameInfo)
         val fragmentA = MyPageFragment()
@@ -68,8 +68,54 @@ class MainActivity : AppCompatActivity()  {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.add(R.id.profile_name_edit,fragmentA)
         transaction.commit()
-
          */
+    }
+
+    private fun initBottomNavigation() {
+        homeFragment = HomeFragment()
+        fragmentManager.beginTransaction().replace(R.id.nav_host_fragment_activity_main, homeFragment!!).commit()
+
+        binding.navView.run{
+        setOnItemSelectedListener {
+            when(it.itemId) {
+                R.id.navigation_home -> {
+                    if (homeFragment == null) {
+                        homeFragment = HomeFragment()
+                        fragmentManager.beginTransaction().add(R.id.nav_host_fragment_activity_main, homeFragment!!).commit()
+                    }
+                    if (homeFragment != null) fragmentManager.beginTransaction().show(homeFragment!!).commit()
+                    if (dataFragment != null) fragmentManager.beginTransaction().hide(dataFragment!!).commit()
+                    if (mypageFragment != null) fragmentManager.beginTransaction().hide(mypageFragment!!).commit()
+
+                    return@setOnItemSelectedListener true
+                }
+                R.id.navigation_data -> {
+                    if (dataFragment == null) {
+                        dataFragment = DataFragment()
+                        fragmentManager.beginTransaction().add(R.id.nav_host_fragment_activity_main, dataFragment!!).commit()
+                    }
+                    if (homeFragment != null) fragmentManager.beginTransaction().hide(homeFragment!!).commit()
+                    if (dataFragment != null) fragmentManager.beginTransaction().show(dataFragment!!).commit()
+                    if (mypageFragment != null) fragmentManager.beginTransaction().hide(mypageFragment!!).commit()
+
+                    return@setOnItemSelectedListener true
+                }
+                R.id.navigation_mypage -> {
+                    if (mypageFragment == null) {
+                        mypageFragment = MyPageFragment()
+                        fragmentManager.beginTransaction().add(R.id.nav_host_fragment_activity_main, mypageFragment!!).commit()
+                    }
+                    if (homeFragment != null) fragmentManager.beginTransaction().hide(homeFragment!!).commit()
+                    if (dataFragment != null) fragmentManager.beginTransaction().hide(dataFragment!!).commit()
+                    if (mypageFragment != null) fragmentManager.beginTransaction().show(mypageFragment!!).commit()
+
+                    return@setOnItemSelectedListener true
+                }
+                else -> {
+                    return@setOnItemSelectedListener true
+                }
+            }
+        }}
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -88,6 +134,25 @@ class MainActivity : AppCompatActivity()  {
         }
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        return navController.navigateUp(appBarConfiguration)
+                || super.onSupportNavigateUp()
+    }
+/*
+    fun initNavigationBar(){
+        binding.navView.run {
+            setOnItemSelectedListener { item ->
+                when(item.itemId) {
+                    R.id.navigation_home -> setFragment(TAG_HOME_FRAGMENT, HomeFragment())
+                    R.id.navigation_data -> setFragment(TAG_HOME_FRAGMENT, HomeFragment())
+                    R.id.navigation_mypage -> setFragment(TAG_MYPAGE_FRAGMENT, MyPageFragment())
+                }
+                true
+            }
+        }
+    }
+ */
     fun receiveNameData(name: String) {
         getSharedPreferences("name_info", Context.MODE_PRIVATE).edit {
             putString("profile", name)
@@ -115,42 +180,5 @@ class MainActivity : AppCompatActivity()  {
             apply()
         }
         Log.d("MainActivity", "저장 ${weight}")
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
-    }
-
-    fun initNavigationBar(){
-        binding.navView.run {
-            setOnItemSelectedListener { item ->
-                when(item.itemId) {
-                    R.id.navigation_home -> {
-                        homeFragment = HomeFragment()
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.nav_host_fragment_activity_main, homeFragment)
-                            .commit()
-
-                    }
-                    R.id.navigation_data -> {
-                        dataFragment = DataFragment()
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.nav_host_fragment_activity_main, dataFragment)
-                            .commit()
-
-                    }
-                    R.id.navigation_mypage -> {
-                        mypageFragment = MyPageFragment()
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.nav_host_fragment_activity_main, mypageFragment)
-                            .commit()
-
-                    }
-                }
-                true
-            }
-        }
     }
 }
